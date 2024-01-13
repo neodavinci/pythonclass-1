@@ -19,6 +19,7 @@ entry.pack(pady=5)
 # 버튼
 button = Button(window, text="메시지 보이기", command=show_message)
 button.pack(pady=10)
+print("Test")
 
 # 윈도우 실행
 window.mainloop()
