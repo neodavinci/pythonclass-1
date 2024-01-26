@@ -11,7 +11,7 @@ from datetime import datetime
 pygame.init()
 
 # 2. 게임창 옵션 설정
-size = [400, 700]
+size = [400, 900]
 screen = pygame.display.set_mode(size)
 
 title = "My Game"
@@ -122,7 +122,7 @@ while SB == 0:
         if ss.x >= size[0] - ss.sx:
             ss.x = size[0] - ss.sx
     
-    if space_go == True and k % 6 == 0:
+    if space_go == True and k % 15 == 0:
         mm = obj()
         mm.put_img("./bullet.png")
         mm.change_size(25,25)
