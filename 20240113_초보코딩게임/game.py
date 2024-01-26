@@ -164,17 +164,26 @@ while SB == 0:
     
     dm_list = []
     da_list = []
+    
+    boom = obj()
+    boom.put_img("./boom.png")
+    boom.change_size(80,80)
     for i in range(len(m_list)):
         for j in range(len(a_list)):
             m = m_list[i]
             a = a_list[j]
             if crash(m,a) == True:
+                boom.x = a.x
+                boom.y = a.y
+                # boom.move = 5
+                # boom.show()
                 dm_list.append(i)
                 da_list.append(j)
     dm_list = list(set(dm_list))
     da_list = list(set(da_list))
     dm_list.reverse()
     da_list.reverse()
+
     try:
         for dm in dm_list:
             del m_list[dm]
@@ -197,6 +206,7 @@ while SB == 0:
         m.show()
     for a in a_list:
         a.show()
+        boom.show()
         
     font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 20)
     text_kill = font.render("killed : {} loss : {}".format(kill, loss), True, (255,255,0))
