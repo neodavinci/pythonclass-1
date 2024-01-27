@@ -1,7 +1,3 @@
-# 레벨기능 (예시. 점점 강력한 외계인이 생성 2번 맞아야 사라짐, 공격하는 외계인)
-# 아이템 추가 (예시. 먹으면 총알 증가, 속도증가, 등등)
-# 필살기 기능( 특정 조건을 만족할때 발동 예시. 100개의 외계인을 격추시 핵미사일 1발 획득하고 핵미사일을 화면의 모든 외계인을 없앨 수 있음)
-
 import pygame
 import random
 import time
@@ -46,7 +42,7 @@ def crash(a, b):
     else : 
         return False
 ss = obj()
-ss.put_img("./ss.png")
+ss.put_img("D:/temp/ss.png")
 ss.change_size(50,80)
 ss.x = round(size[0]/2- ss.sx/2)
 ss.y = size[1] -ss.sy - 15
@@ -76,7 +72,7 @@ while SB == 0:
             if event.key == pygame.K_SPACE:
                 SB = 1
     screen.fill(black)
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 15)
+    font = pygame.font.Font("C:/Windows/Fonts/BMDOHYEON_ttf.ttf", 15)
     text = font.render("PRESS SPACE KEY TO START THE GAME", True, (255,255,255))
     screen.blit(text, (40, round(size[1]/2-50)))    
     pygame.display.flip()
@@ -122,17 +118,15 @@ while SB == 0:
         if ss.x >= size[0] - ss.sx:
             ss.x = size[0] - ss.sx
     
-    if space_go == True and k % 15 == 0:
+    if space_go == True and k % 6 == 0:
         mm = obj()
-        mm.put_img("./bullet.png")
-        mm.change_size(25,25)
+        mm.put_img("D:/temp/bullet.png")
+        mm.change_size(5,15)
         mm.x = round(ss.x + ss.sx/2 - mm.sx/2)
         mm.y = ss.y - mm.sy - 10
         mm.move = 15
         m_list.append(mm)
     k += 1
-
-    
     d_list = []    
     for i in range(len(m_list)):
         m = m_list[i]
@@ -145,7 +139,7 @@ while SB == 0:
         
     if random.random() > 0.98: 
         aa = obj()
-        aa.put_img("./alien.png")
+        aa.put_img("D:/temp/alien.png")
         aa.change_size(40,40)
         aa.x = random.randrange(0, size[0]-aa.sx-round(ss.sx/2))
         aa.y = 10
@@ -164,26 +158,17 @@ while SB == 0:
     
     dm_list = []
     da_list = []
-    
-    boom = obj()
-    boom.put_img("./boom.png")
-    boom.change_size(80,80)
     for i in range(len(m_list)):
         for j in range(len(a_list)):
             m = m_list[i]
             a = a_list[j]
             if crash(m,a) == True:
-                boom.x = a.x
-                boom.y = a.y
-                # boom.move = 5
-                # boom.show()
                 dm_list.append(i)
                 da_list.append(j)
     dm_list = list(set(dm_list))
     da_list = list(set(da_list))
     dm_list.reverse()
     da_list.reverse()
-
     try:
         for dm in dm_list:
             del m_list[dm]
@@ -206,9 +191,8 @@ while SB == 0:
         m.show()
     for a in a_list:
         a.show()
-        boom.show()
         
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 20)
+    font = pygame.font.Font("C:/Windows/Fonts/BMDOHYEON_ttf.ttf", 20)
     text_kill = font.render("killed : {} loss : {}".format(kill, loss), True, (255,255,0))
     screen.blit(text_kill, (10, 5))
     
@@ -224,7 +208,7 @@ while GO == 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             GO = 0
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 40)
+    font = pygame.font.Font("C:/Windows/Fonts/BMDOHYEON_ttf.ttf", 40)
     text = font.render("GAME OVER", True, (255,0,0))
     screen.blit(text, (80, round(size[1]/2-50)))
     pygame.display.flip()

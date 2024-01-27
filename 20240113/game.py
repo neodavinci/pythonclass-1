@@ -11,7 +11,7 @@ from datetime import datetime
 pygame.init()
 
 # 2. 게임창 옵션 설정
-size = [400, 900]
+size = [400, 700]
 screen = pygame.display.set_mode(size)
 
 title = "My Game"
@@ -76,7 +76,7 @@ while SB == 0:
             if event.key == pygame.K_SPACE:
                 SB = 1
     screen.fill(black)
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 15)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 15)
     text = font.render("PRESS SPACE KEY TO START THE GAME", True, (255,255,255))
     screen.blit(text, (40, round(size[1]/2-50)))    
     pygame.display.flip()
@@ -122,7 +122,7 @@ while SB == 0:
         if ss.x >= size[0] - ss.sx:
             ss.x = size[0] - ss.sx
     
-    if space_go == True and k % 15 == 0:
+    if space_go == True and k % 6 == 0:
         mm = obj()
         mm.put_img("./bullet.png")
         mm.change_size(25,25)
@@ -132,7 +132,7 @@ while SB == 0:
         m_list.append(mm)
     k += 1
 
-    
+
     d_list = []    
     for i in range(len(m_list)):
         m = m_list[i]
@@ -164,26 +164,17 @@ while SB == 0:
     
     dm_list = []
     da_list = []
-    
-    boom = obj()
-    boom.put_img("./boom.png")
-    boom.change_size(80,80)
     for i in range(len(m_list)):
         for j in range(len(a_list)):
             m = m_list[i]
             a = a_list[j]
             if crash(m,a) == True:
-                boom.x = a.x
-                boom.y = a.y
-                # boom.move = 5
-                # boom.show()
                 dm_list.append(i)
                 da_list.append(j)
     dm_list = list(set(dm_list))
     da_list = list(set(da_list))
     dm_list.reverse()
     da_list.reverse()
-
     try:
         for dm in dm_list:
             del m_list[dm]
@@ -206,9 +197,8 @@ while SB == 0:
         m.show()
     for a in a_list:
         a.show()
-        boom.show()
         
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 20)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 20)
     text_kill = font.render("killed : {} loss : {}".format(kill, loss), True, (255,255,0))
     screen.blit(text_kill, (10, 5))
     
@@ -224,8 +214,11 @@ while GO == 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             GO = 0
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 40)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 40)
     text = font.render("GAME OVER", True, (255,0,0))
     screen.blit(text, (80, round(size[1]/2-50)))
     pygame.display.flip()
 pygame.quit()
+
+print("test")
+
