@@ -11,7 +11,7 @@ from datetime import datetime
 pygame.init()
 
 # 2. 게임창 옵션 설정
-size = [400, 900]
+size = [400, 500]
 screen = pygame.display.set_mode(size)
 
 title = "My Game"
@@ -76,7 +76,7 @@ while SB == 0:
             if event.key == pygame.K_SPACE:
                 SB = 1
     screen.fill(black)
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 15)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 15)
     text = font.render("PRESS SPACE KEY TO START THE GAME", True, (255,255,255))
     screen.blit(text, (40, round(size[1]/2-50)))    
     pygame.display.flip()
@@ -208,7 +208,7 @@ while SB == 0:
         a.show()
         boom.show()
         
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 20)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 20)
     text_kill = font.render("killed : {} loss : {}".format(kill, loss), True, (255,255,0))
     screen.blit(text_kill, (10, 5))
     
@@ -224,7 +224,7 @@ while GO == 1:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             GO = 0
-    font = pygame.font.Font("C:/Windows/Fonts/GmarketSansTTFBold.ttf", 40)
+    font = pygame.font.Font("C:/Windows/Fonts/AGENCYR.ttf", 40)
     text = font.render("GAME OVER", True, (255,0,0))
     screen.blit(text, (80, round(size[1]/2-50)))
     pygame.display.flip()
